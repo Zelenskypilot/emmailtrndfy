@@ -1,3 +1,42 @@
-<h1>New Payment Verification Required</h1>
-<p>Details of the payment:</p>
-<pre><%= JSON.stringify(paymentDetails, null, 2) %></pre>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Payment Verification</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #f05525;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>New Payment Verification Required</h1>
+        <p>Details of the payment:</p>
+        <ul>
+            <li><strong>Username:</strong> <%= username %></li>
+            <li><strong>Phone Number:</strong> <%= phoneNumber %></li>
+            <li><strong>Amount:</strong> $<%= amount %></li>
+            <li><strong>Reference:</strong> <%= reference %></li>
+            <li><strong>Date:</strong> <%= date %></li>
+        </ul>
+    </div>
+</body>
+</html>
