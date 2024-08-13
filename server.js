@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'trendifysmm@gmail.com',
-    pass: 'lhukzubzomjp bzoj', // Replace with your actual app password
+    pass: 'lhukzubzomjpbzoj', // Application-specific password for Gmail
   },
 });
 
@@ -49,6 +49,14 @@ app.post('/payment', async (req, res) => {
     console.error('Error sending emails:', error);
     res.status(500).json({ message: 'Failed to send emails.' });
   }
+});
+
+// Serve static files (like the form) if needed
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Root route (optional)
+app.get('/', (req, res) => {
+  res.send('Server is up and running.');
 });
 
 app.listen(port, () => {
