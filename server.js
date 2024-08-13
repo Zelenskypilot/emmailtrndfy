@@ -19,6 +19,11 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Root route to avoid "Cannot GET /" error
+app.get('/', (req, res) => {
+  res.send('Email server is up and running.');
+});
+
 // Endpoint to receive payment data
 app.post('/payment', async (req, res) => {
   const { username, phoneNumber, amount, reference, date } = req.body;
