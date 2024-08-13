@@ -30,7 +30,6 @@ app.post('/payment', async (req, res) => {
   const userEmail = `${phoneNumber}@smsgateway.com`; // Assume phone number as email
 
   try {
-    // Prepare the email content using EJS templates
     const emailTemplatePath = path.join(__dirname);
 
     // Admin email template
@@ -63,8 +62,8 @@ app.post('/payment', async (req, res) => {
 
     res.status(200).json({ message: 'Emails sent successfully!' });
   } catch (error) {
-    console.error('Error sending emails:', error);
-    res.status(500).json({ message: 'Failed to send emails.' });
+    console.error('Error sending emails:', error.message);
+    res.status(500).json({ message: `Failed to send emails. ${error.message}` });
   }
 });
 
