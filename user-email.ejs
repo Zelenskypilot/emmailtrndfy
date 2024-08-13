@@ -1,2 +1,35 @@
-<h1>Payment Received</h1>
-<p>Thank you for your payment. We have received your payment details and will process them shortly.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Received</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #f05525;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Received</h1>
+        <p>Thank you for your payment, <strong><%= username %></strong>. We have received your payment of $<%= amount %> on <%= date %>. Your payment reference number is <%= reference %>.</p>
+    </div>
+</body>
+</html>
