@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+</head>
+<body>
+    <h1>Payment Form</h1>
+    <form id="paymentForm">
+        <label for="userEmail">Your Email:</label>
+        <input type="email" id="userEmail" name="userEmail" required>
+        <br>
+        <label for="paymentDetails">Payment Details:</label>
+        <textarea id="paymentDetails" name="paymentDetails" rows="4" cols="50" required></textarea>
+        <br>
+        <button type="submit">Submit Payment</button>
+    </form>
+
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const userEmail = document.getElementById('userEmail').value;
+            const paymentDetails = document.getElementById('paymentDetails').value;
+
+            try {
+                const response = await fetch('https://your-render-app-url/payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userEmail: userEmail,
+                        paymentDetails: paymentDetails,
+                    }),
+                });
+
+                const result = await response.json();
+                alert(result.message); // Show success message or handle result
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error processing your payment.');
+            }
+        });
+    </script>
+</body>
+</html>
