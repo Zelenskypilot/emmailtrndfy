@@ -2,8 +2,13 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const ejs = require('ejs');
 const path = require('path');
+const cors = require('cors'); // Import CORS
+
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Enable CORS for all origins
+app.use(cors());
 
 app.use(express.json()); // For parsing application/json
 
@@ -23,7 +28,7 @@ app.post('/payment', async (req, res) => {
   try {
     // Prepare the email content using EJS templates
     const emailTemplatePath = path.join(__dirname); // Use current directory
-    
+
     // Admin email template
     const adminEmailTemplate = await ejs.renderFile(path.join(emailTemplatePath, 'admin-email.ejs'), { paymentDetails });
     const userEmailTemplate = await ejs.renderFile(path.join(emailTemplatePath, 'user-email.ejs'), { paymentDetails });
@@ -46,8 +51,8 @@ app.post('/payment', async (req, res) => {
 
     res.status(200).json({ message: 'Emails sent successfully!' });
   } catch (error) {
-    console.error('Error sending emails:', error);
-    res.status(500).json({ message: 'Failed to send emails.' });
+    console.error('Error sending emails:', error); // Log the detailed error
+    res.status(500).json({ message: `Failed to send emails. ${error.message}` });
   }
 });
 
