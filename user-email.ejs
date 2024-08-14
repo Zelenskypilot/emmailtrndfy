@@ -10,48 +10,108 @@
             color: #fff;
             background-color: #0f3462;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
         .container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             max-width: 650px;
             margin: auto;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: #fff;
         }
-        h1, h2 {
-            color: #0f3462;
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
         }
-        p {
-            font-size: 15px;
+        .header img {
+            width: 30px;
+            margin-right: 10px;
+        }
+        .header .company-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f3ba2f;
+        }
+        .content {
+            background-color: #292929;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .content h1 {
+            color: #f3ba2f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+            font-size: 16px;
             line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #f3ba2f;
+            color: #1e1e1e;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
         }
         .footer {
             text-align: center;
+            color: #a1a1a1;
             margin-top: 20px;
-            color: #0f3462;
+            font-size: 14px;
         }
         .footer a {
-            color: #F3BA2F;
+            color: #f3ba2f;
             text-decoration: none;
-            font-weight: bold;
         }
-        .logo {
-            width: 100px;
-            display: block;
-            margin: 0 auto 20px;
+        .footer p {
+            margin: 5px 0;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: #f3ba2f;
+            font-size: 18px;
+            margin: 0 10px;
+            text-decoration: none;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <img src="https://i.ibb.co/7yHrDYZ/Picsart-24-07-04-16-42-30-780.png" alt="Company Logo" class="logo">
-        <h1>Payment Received</h1>
-        <p>Thank you for your payment, soon we will add to your account after verification <strong><%= username %></strong>. We have received your payment of $<%= amount %> on <%= date %>. Your payment reference number is <%= reference %>.</p>
+        <div class="header">
+            <img src="https://i.ibb.co/7yHrDYZ/Picsart-24-07-04-16-42-30-780.png" alt="Company Logo">
+            <div class="company-name">Trendifysmm Marketing Agency</div>
+        </div>
+        <div class="content">
+            <h1>Payment Received</h1>
+            <p>You made the following payment via our service:</p>
+            <p><strong>Date & Time:</strong> <%= date %></p>
+            <p><strong>Amount:</strong> Tsh<%= amount %></p>
+            <p><strong>Reference:</strong> <%= reference %></p>
+            <p>Thank you for your payment, <strong><%= username %></strong>. We have received your payment and it will be added to your account after verification.</p>
+            <a href="#" class="btn">Discover More Exciting Offers!</a>
+        </div>
         <div class="footer">
-            <p>For assistance, contact us at: +255747437093</p>
-            <p>Visit our website: <a href="http://www.trendifysmm.com">www.trendifysmm.com</a></p>
+            <p>Stay connected with us:</p>
+            <div class="social-icons">
+                <a href="https://facebook.com/yourprofile"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/yourprofile"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/yourprofile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://instagram.com/yourprofile"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2024 Trendifysmm.com</p>
         </div>
     </div>
 </body>
