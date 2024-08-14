@@ -3,92 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Payment Verification</title>
+    <title>Admin Notification</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333;
-            background-color: #F3BA2F;
+            color: #fff;
+            background-color: #0f3462;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
         .container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border: 1px solid #F3BA2F;
             max-width: 650px;
             margin: auto;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: #fff;
         }
-        h1 {
-            color: #0f3462;
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
         }
-        table {
+        .header img {
+            width: 30px;
+            margin-right: 10px;
+        }
+        .header .company-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f3ba2f;
+        }
+        .content {
+            background-color: #292929;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .content h1 {
+            color: #f3ba2f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .content table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin-top: 20px;
         }
-        th, td {
-            border: 1px solid #F3BA2F;
-            padding: 10px;
+        .content th, .content td {
+            padding: 12px;
+            border: 1px solid #444;
             text-align: left;
+            color: #fff;
         }
-        th {
-            background-color: #0f3462;
-            color: white;
+        .content th {
+            background-color: #f3ba2f;
+            color: #1e1e1e;
+            font-weight: bold;
         }
-        td {
-            background-color: #ffffff;
+        .content tr:nth-child(even) {
+            background-color: #3e3e3e;
         }
         .footer {
             text-align: center;
+            color: #a1a1a1;
             margin-top: 20px;
+            font-size: 14px;
         }
-        .footer a {
-            color: #0f3462;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .logo {
-            width: 100px;
-            display: block;
-            margin: 0 auto 20px;
+        .footer p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://i.ibb.co/7yHrDYZ/Picsart-24-07-04-16-42-30-780.png" alt="Company Logo" class="logo">
-        <h1>New Payment Verification</h1>
-        <p>Details of the payment:</p>
-        <table>
-            <tr>
-                <th>Field</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>Username</td>
-                <td><%= username %></td>
-            </tr>
-            <tr>
-                <td>Phone Number</td>
-                <td><%= phoneNumber %></td>
-            </tr>
-            <tr>
-                <td>Amount</td>
-                <td>$<%= amount %></td>
-            </tr>
-            <tr>
-                <td>Reference</td>
-                <td><%= reference %></td>
-            </tr>
-            <tr>
-                <td>Date</td>
-                <td><%= date %></td>
-            </tr>
-        </table>
-        
+        <div class="header">
+            <img src="https://i.ibb.co/7yHrDYZ/Picsart-24-07-04-16-42-30-780.png" alt="Company Logo">
+            <div class="company-name">Trendifysmm Marketing Agency</div>
+        </div>
+        <div class="content">
+            <h1>New Payment Notification</h1>
+            <p>A new payment has been received through the service:</p>
+            <table>
+                <tr>
+                    <th>Date & Time</th>
+                    <td><%= date %></td>
+                </tr>
+                <tr>
+                    <th>Amount</th>
+                    <td><%= amount %> Tsh</td>
+                </tr>
+                <tr>
+                    <th>Reference</th>
+                    <td><%= reference %></td>
+                </tr>
+                <tr>
+                    <th>User</th>
+                    <td><%= username %></td>
+                </tr>
+            </table>
+            <p>Please verify the payment and update the user’s account accordingly.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Trendifysmm.com</p>
+        </div>
     </div>
 </body>
 </html>
