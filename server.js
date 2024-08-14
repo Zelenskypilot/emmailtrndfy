@@ -35,18 +35,18 @@ app.post('/payment', async (req, res) => {
     // Admin email template
     const adminEmailTemplate = await ejs.renderFile(
       path.join(emailTemplatePath, 'admin-email.ejs'),
-      { username, phoneNumber, amount, reference, date }
+      { username, phoneNumber, amount, reference: reference || 'N/A', date }
     );
 
     // User email template
     const userEmailTemplate = await ejs.renderFile(
       path.join(emailTemplatePath, 'user-email.ejs'),
-      { username, amount, date }
+      { username, amount, date, reference: reference || 'N/A' }
     );
 
     // Send email to admin
     await transporter.sendMail({
-      from: userEmail, // From: user email
+      from: 'trendifysmm@gmail.com', // From: your company email
       to: 'trendifysmm@gmail.com', // To: your company email
       subject: 'New Payment Verification Required',
       html: adminEmailTemplate,
