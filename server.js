@@ -26,8 +26,7 @@ app.get('/', (req, res) => {
 
 // Endpoint to receive payment data
 app.post('/payment', async (req, res) => {
-  const { username, phoneNumber, amount, reference, date } = req.body;
-  const userEmail = `${phoneNumber}@smsgateway.com`; // Assume phone number as email
+  const { email, username, phoneNumber, amount, reference, date } = req.body;
 
   try {
     const emailTemplatePath = path.join(__dirname);
@@ -35,27 +34,27 @@ app.post('/payment', async (req, res) => {
     // Admin email template
     const adminEmailTemplate = await ejs.renderFile(
       path.join(emailTemplatePath, 'admin-email.ejs'),
-      { username, phoneNumber, amount, reference: reference || 'N/A', date }
+      { username, phoneNumber, amount, reference, date }
     );
 
     // User email template
     const userEmailTemplate = await ejs.renderFile(
       path.join(emailTemplatePath, 'user-email.ejs'),
-      { username, amount, date, reference: reference || 'N/A' }
+      { username, amount, date, reference }
     );
 
     // Send email to admin
     await transporter.sendMail({
-      from: 'trendifysmm@gmail.com', // From: your company email
+      from: email, // From: user email
       to: 'trendifysmm@gmail.com', // To: your company email
-      subject: 'New Payment Verification Required',
+      subject: 'Payment Verification Required',
       html: adminEmailTemplate,
     });
 
     // Send email to user
     await transporter.sendMail({
       from: 'trendifysmm@gmail.com', // From: your company email
-      to: userEmail, // To: user email
+      to: email, // To: user email
       subject: 'Payment Received',
       html: userEmailTemplate,
     });
