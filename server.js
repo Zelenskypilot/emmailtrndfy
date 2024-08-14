@@ -47,7 +47,7 @@ app.post('/payment', async (req, res) => {
     await transporter.sendMail({
       from: email, // From: user email
       to: 'trendifysmm@gmail.com', // To: your company email
-      subject: 'Payment Verification Required',
+      subject: 'New Payment Verification Required',
       html: adminEmailTemplate,
     });
 
