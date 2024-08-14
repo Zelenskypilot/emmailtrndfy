@@ -29,7 +29,7 @@
 <body>
     <div class="container">
         <h1>Payment Received</h1>
-        <p>Thank you for your payment, <strong><%= username %></strong>. We have received your payment of $<%= amount %> on <%= date %>. Your payment reference number is <%= reference %>.</p>
+        <p>Thank you for your payment, <strong><%= username %></strong>. We have received your payment of $<%= amount %> on <%= date %>. Your payment reference number is <%= reference ? reference : 'N/A' %>.</p>
     </div>
 </body>
 </html>
