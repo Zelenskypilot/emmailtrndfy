@@ -14,8 +14,8 @@ app.use(cors()); // Enable CORS for all routes
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'trendifysmm@gmail.com',
-    pass: 'lhukzubzomjpbzoj', // Replace with your actual app password
+    user: process.env.EMAIL_USER, // Set in Render
+    pass: process.env.EMAIL_PASS, // Set in Render
   },
 });
 
@@ -46,14 +46,14 @@ app.post('/payment', async (req, res) => {
     // Send email to admin
     await transporter.sendMail({
       from: email, // From: user email
-      to: 'trendifysmm@gmail.com', // To: your company email
+      to: process.env.ADMIN_EMAIL, // Set in Render
       subject: 'New Payment Verification Required',
       html: adminEmailTemplate,
     });
 
     // Send email to user
     await transporter.sendMail({
-      from: 'trendifysmm@gmail.com', // From: your company email
+      from: process.env.EMAIL_USER, // From: your company email
       to: email, // To: user email
       subject: 'Payment Received',
       html: userEmailTemplate,
